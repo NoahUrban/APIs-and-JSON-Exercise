@@ -8,25 +8,27 @@ namespace APIsAndJSON
     {
         static void Main(string[] args)
         {
-            //var client = new HttpClient();
-            //var quote = new QuoteGenerator(client);
+            var exerciseOneClient = new HttpClient();
+            var quote = new QuoteGenerator(exerciseOneClient);
 
-            //for (int i = 0; i < 5; i++)
-            //{
-            //    Console.WriteLine("------------------------");
-            //    Console.WriteLine($"Kanye: {quote.Kanye()}");
+            for (int i = 0; i < 5; i++)
+            {
+                Console.WriteLine("------------------------");
+                Console.WriteLine($"Kanye: {quote.Kanye()}");
 
-            //    Console.WriteLine($"Ron Swanson: {quote.Ron()}");
-            //}
+                Console.WriteLine($"Ron Swanson: {quote.Ron()}");
+            }
+
+            Console.WriteLine();
 
             //Weather API
-            var client = new HttpClient();
+            var exerciseTwoClient = new HttpClient();
 
             var key = "091bb125d9ea839a5525b32249c56ade";
             var city = "Spring Hill";
 
             var weatherURL = $"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={key}&units=imperial";
-            var response = client.GetStringAsync(weatherURL).Result;
+            var response = exerciseTwoClient.GetStringAsync(weatherURL).Result;
 
             JObject formatResponse = JObject.Parse(response);
 
